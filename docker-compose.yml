@@ -8,16 +8,19 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
       RAILS_ENV: development
       DB_HOST: db
       DB_USER: kakeibo_user
       DB_PASSWORD: kakeibo_pass
       DB_NAME: kakeibo_development
+      
   db:
     image: postgres:18
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
     environment:
       POSTGRES_USER: kakeibo_user
       POSTGRES_PASSWORD: kakeibo_pass
