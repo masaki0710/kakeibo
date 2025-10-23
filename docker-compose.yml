@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     environment:
-      RILS_ENV: development
+      RAILS_ENV: development
       DB_HOST: db
       DB_USER: kakeibo_user
       DB_PASSWORD: kakeibo_pass
