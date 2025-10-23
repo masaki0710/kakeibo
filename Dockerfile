@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     postgresql-client \
     nodejs \
-    yarn
+    npm
+
+RUN npm install -g yarn
 
 WORKDIR /myapp
 
