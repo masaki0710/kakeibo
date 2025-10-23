@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: bundle exec rails server -b 0.0.0.0
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RILS_ENV: development
+      DB_HOST: db
+      DB_USER: kakeibo_user
+      DB_PASSWORD: kakeibo_pass
+      DB_NAME: kakeibo_development
+  db:
+    image: postgres:18
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: kakeibo_user
+      POSTGRES_PASSWORD: kakeibo_pass
+      POSTGRES_DB: kakeibo_development
+
+volumes:
+  postgres_data:
